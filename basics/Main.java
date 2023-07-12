@@ -7,9 +7,24 @@ public class Main{
     String greeting = "Welcome to my Java program.";
     System.out.println(greeting); 
 
-    pluralize("cat", 1);
-    flipHeads(2);
-    clock();
+    // pluralize("cat", 1);
+    // flipHeads(2);
+    // clock();
+
+    int[] simpleArray = {1,2,3};
+    int[] longerArray = {1,2,3,4,0,6,7,8,9};
+    int[] modifiedSimple = arrayInsert(simpleArray,5);
+    int[] modifiedLonger = arrayInsert(longerArray, 5);
+    
+    for (int i : modifiedLonger) {
+        System.out.print(i);
+    }
+
+    System.out.println();
+    
+    for (int i : modifiedSimple) {
+        System.out.print(i);
+    }
 
     }
 
@@ -64,5 +79,13 @@ public class Main{
             
         }while (notWorkingInt > 1);
 
+    }
+
+    public static int[] arrayInsert(int[] inputArray, int newNumber){
+        int theMiddle = inputArray.length/2;
+        int[] modifiedArray = inputArray;
+        modifiedArray[theMiddle] = newNumber;
+
+        return modifiedArray;
     }
 }
