@@ -3,9 +3,40 @@
  */
 package librarybasic;
 
-import java.util.Random;
+import java.util.*;
 
 public class Library {
+    public static void main(String[] args) {
+
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+
+        StringBuilder myResult = weatherData(weeklyMonthTemperatures);
+        System.out.println(myResult);
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        tally(votes);
+    }
+
+
+
+
+
+
     public boolean someLibraryMethod() {
         return true;
     }
@@ -72,6 +103,75 @@ public class Library {
 
         return myFoundArray;
     }
+
+    public static StringBuilder weatherData(int[][] temperatures) {
+
+        //generate hashSet for unique weather days
+        HashSet<Integer> seenTemperatures = new HashSet<>();
+
+        for (int[] week : temperatures) {
+
+            for (int[] weekday : temperatures) {
+                for (int i = 0; i < week.length; i++) {
+                    seenTemperatures.add(weekday[i]);
+                }
+            }
+        }
+
+        //Find high low and unseen days
+        ArrayList<Integer> mySeenTemps = new ArrayList(seenTemperatures);
+        Collections.sort(mySeenTemps);
+        int minTemp = mySeenTemps.get(0);
+        int maxTemp = mySeenTemps.get(mySeenTemps.size()-1);
+        ArrayList<Integer> unfoundTemps = new ArrayList<>();
+
+        // Loop to find unseen temperatures
+        for(int i=minTemp; i<maxTemp; i++ ){
+            if(!mySeenTemps.contains(i)){
+                unfoundTemps.add(i);
+            }
+        }
+
+        //build the final result
+        StringBuilder result = new StringBuilder("High: " + maxTemp + "\n");
+        result.append("Low: " + minTemp + "\n");
+        for (int i = 0; i < unfoundTemps.size(); i++) {
+            result.append("Never saw temperature: "+ unfoundTemps.get(i) +"\n");
+        }
+
+        return result;
+    }
+
+    public static void tally(List<String> talliesCollected){
+        HashMap<String, Integer> countHashMap = new HashMap<>();
+
+        //populate Hashmap from tallies collected
+        for (int i = 0; i < talliesCollected.size() ; i++) {
+            String tally = talliesCollected.get(i);
+            if (countHashMap.get(tally) == null) {
+                countHashMap.put(tally,1);
+            } else{
+                int currentCount = countHashMap.get(tally) +1;
+                countHashMap.put(tally , currentCount);
+            }
+        }
+        
+        String winner = "Tie" ;
+        int highestScore = 0;
+
+        for (String i: countHashMap.keySet()) {
+            //System.out.println(i);
+            if(countHashMap.get(i) > highestScore){
+                highestScore = countHashMap.get(i);
+                winner = i;
+            }
+        }
+
+        System.out.println(winner + " received the most votes!");
+
+    }
+
+
 }
 
 
