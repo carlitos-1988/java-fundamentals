@@ -35,16 +35,16 @@ public class App {
             lineCount++;
             String readLine = scanner.nextLine();
 
-        if(readLine.isEmpty()){
-            continue;
-        }
+            if(readLine.isEmpty()){
+                continue;
+            }
 
-            Character lastCharacter = readLine.charAt(readLine.length() - 1);
+                Character lastCharacter = readLine.charAt(readLine.length() - 1);
 
-        if(!characterCheckerHelper(readLine, characters) || lastCharacter != ';'){
-            System.out.println("Error in line " + lineCount + ": " + readLine);
+            if(!characterCheckerHelper(readLine, characters) || lastCharacter != ';'){
+                System.out.println("Error in line " + lineCount + ": " + readLine);
 
-        }
+            }
 
         }
 
