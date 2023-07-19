@@ -3,35 +3,36 @@
  */
 package inheritance;
 
-import inheritance.restaurant.Restaurant;
-import inheritance.restaurant.Review;
+import inheritance.restaurant.*;
 
 public class App {
 
 
     public static void main(String[] args) {
 
-        Restaurant myRestaurant = new Restaurant();
-        Restaurant competitorRestaurant = new Restaurant("Starbucks", 4.00f, 3);
 
-        System.out.println(competitorRestaurant.toString());
-        System.out.println(myRestaurant.toString());
+        Restaurant myTestR = new Restaurant("Chipotle");
+        System.out.println(myTestR.toString());
 
-        Review testReview1 = new Review("Juan", 5);
-        Review testReview2 = new Review(new StringBuilder("worst experience ever food came out cold"), "Jose", 2);
-        Review testReview3 = new Review(new StringBuilder("I did not get the food I ordered"), "Kimmy",1);
+        Restaurant myOtherTestR = new Restaurant("Dominoes", "Pizza");
 
+        Review jReview = new Review(new StringBuilder("Pizza was trash I cannot believe that I did that"),"Juan", 1);
+        myOtherTestR.addReview(jReview);
+        System.out.println(myOtherTestR.toString());
 
-        System.out.println(testReview1.toString());
-        System.out.println(testReview2.toString());
+        Review kReview = new Review(new StringBuilder("awful just awful"),"kimmy", 4);
+        Shop appleStore = new Shop("Apple Store Tacoma");
+        appleStore.addReview(kReview);
 
-        competitorRestaurant.addReview(testReview1);
-        competitorRestaurant.addReview(testReview2);
-        competitorRestaurant.addReview(testReview3);
+        System.out.println(appleStore.toString());
 
+        Theater amc = new Theater("Tacoma");
+        amc.setEstablishmentName("AMC");
+        MovieReview aReview = new MovieReview("Batman","Alex", 2, new StringBuilder("This movie was not good at all, do not reccomend"));
+        amc.addReview(aReview);
 
-        System.out.println("__________-------------------____________");
-        System.out.println(competitorRestaurant.toString());
+        System.out.println(amc.toString());
+
 
     }
 }

@@ -1,79 +1,57 @@
 package inheritance.restaurant;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class Restaurant {
+public class Restaurant extends Establishment {
 
-    private String restaurantName;
-    private float rating;
-    private int price;
+    private String typeOfRestaurant;
 
-    ArrayList<Review> reviews;
-
-    public Restaurant() {
-        this.rating =5.00f;
-        this.reviews = new ArrayList<>();
+    public Restaurant(String restaurantName, String typeOfRestaurant) {
+        super(restaurantName);
+        this.typeOfRestaurant = typeOfRestaurant;
     }
-
 
     public Restaurant(String restaurantName) {
-        this.rating = 5.00f;
-        this.restaurantName = restaurantName;
-        this.reviews = new ArrayList<>();
+        super(restaurantName);
+        this.typeOfRestaurant = "undefined";
     }
 
-    public Restaurant(String restaurantName, float rating, int price) {
-        this.restaurantName = restaurantName;
-        this.rating = rating;
-        this.price = price;
-        this.reviews = new ArrayList<>();
+    public Restaurant(String establishmentName, float rating, int price, ArrayList<Review> reviews, String typeOfRestaurant) {
+        super(establishmentName, rating, price, reviews);
+        this.typeOfRestaurant = typeOfRestaurant;
     }
 
-    public void addReview(Review review){
-        reviews.add(review);
-        this.rating = updateRating(review);
-    }
-
-    public float updateRating(Review review) {
-
-        float newRating = this.rating;
-        int iteratedTimes = 1;
-
-        if (this.rating == 0) {
-            return review.getStarsGiven();
-        } else {
-            for (Review eachReview : this.reviews) {
-                newRating += eachReview.getStarsGiven();
-                iteratedTimes++;
-            }
-        }
-
-        System.out.println(newRating + " " + iteratedTimes);
-        return newRating/iteratedTimes;
+    public Restaurant(String establishmentName, float rating, int price, String typeOfRestaurant) {
+        super(establishmentName, rating, price);
+        this.typeOfRestaurant = typeOfRestaurant;
     }
 
     @Override
     public String toString() {
-        return "Restaurant{ " +
-                "restaurantName ='" + this.restaurantName + '\'' +
-                ", rating = " + this.rating +
-                ", price = " + this.price +
-                ", reviews ALL= " + this.reviews.toString() +
+        return "Restaurant{" +
+                "typeOfRestaurant='" + typeOfRestaurant + '\'' +
+                "name of restaurant ='" + super.getEstablishmentName() + '\'' +
+                "rating ='" + super.getRating() + '\'' +
+                ", reviews=" + super.reviews.toString() +
                 '}';
     }
-
-    static Integer iterateLinkedListIteratively(LinkedList<Integer> list) {
-
-        Integer largestValue = -1;
-
-        for (Integer element : list) {
-            if(element>largestValue){
-                largestValue = element;
-            }
-        }
-
-
-        return largestValue;
-    }
 }
+
+
+//copied from today's class not used here just wanted to have this
+
+
+
+//    static Integer iterateLinkedListIteratively(LinkedList<Integer> list) {
+//
+//        Integer largestValue = -1;
+//
+//        for (Integer element : list) {
+//            if(element>largestValue){
+//                largestValue = element;
+//            }
+//        }
+//
+//
+//        return largestValue;
+//    }
