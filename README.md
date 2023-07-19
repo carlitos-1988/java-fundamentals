@@ -14,4 +14,7 @@ Main section is to hold the Feature Tasks for the assignment
 
 ## Lab: Class 06
 
-- generated new directory to fit Restaurants and Reviews in code. All requirements have been met inside of each class. Each class is able to hold an ArrayList of reviews each independent of the holding class. the Review is able to update the rating of the restaurant when the review is added to it. No tests generated as of 17Jul2023. 
+- generated new directory to fit Restaurants and Reviews in code. All requirements have been met inside of each class. Each class is able to hold an ArrayList of reviews each independent of the holding class. the Review is able to update the rating of the restaurant when the review is added to it. No tests generated as of 17Jul2023.
+
+- ## Lab: Class 07
+- generated new interfaces and added class inheritance for the establishment and review in order to handle how each of the cases outlined in the instructions. No test cases generated yet but application is working as expected in app.java. 
